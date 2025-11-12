@@ -23,4 +23,11 @@ print(driver.find_element(By.TAG_NAME, "h1").text)
 driver.find_element(By.LINK_TEXT, "Return to index").click()
 driver.back()
 
+# 6. By.PARTIAL_LINK_TEXT
+driver.find_element(By.PARTIAL_LINK_TEXT, "Return").click()
+time.sleep(5)
+driver.back()
+
 time.sleep(10)
+
+driver.quit()
