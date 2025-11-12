@@ -14,4 +14,7 @@ driver.find_element(By.NAME, "my-password").send_keys("Password")
 # 3. By.CLASS_NAME
 driver.find_element(By.CLASS_NAME, "form-control").send_keys(" This goes to the first field that has classname of form-control")
 
+# 4. By.TAG_NAME
+print(driver.find_element(By.TAG_NAME, "h1").text)
+
 time.sleep(5)
