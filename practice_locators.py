@@ -31,6 +31,11 @@ driver.back()
 # 7. By.CSS_SELECTOR
 driver.find_element(By.CSS_SELECTOR, "input[type='text']").send_keys("css selector")
 
+time.sleep(2)
+
+# 8. By.XPATH
+driver.find_element(By.XPATH, "//input[@type='text']").clear()
+
 time.sleep(3)
 
 driver.quit()
