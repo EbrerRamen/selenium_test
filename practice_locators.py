@@ -1,5 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import time
 
 driver = webdriver.Chrome()
@@ -17,4 +19,8 @@ driver.find_element(By.CLASS_NAME, "form-control").send_keys(" This goes to the 
 # 4. By.TAG_NAME
 print(driver.find_element(By.TAG_NAME, "h1").text)
 
-time.sleep(5)
+# 5. By.LINK_TEXT
+driver.find_element(By.LINK_TEXT, "Return to index").click()
+driver.back()
+
+time.sleep(10)

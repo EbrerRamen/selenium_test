@@ -17,5 +17,8 @@ message.send_keys("Hi! This is Selenium")
 submit_btn = driver.find_element(By.CSS_SELECTOR, "button")
 submit_btn.click()
 
+link = driver.find_element(By.LINK_TEXT, "About")
+link.click()
+
 time.sleep(10)
 driver.quit()
