@@ -28,6 +28,9 @@ driver.find_element(By.PARTIAL_LINK_TEXT, "Return").click()
 time.sleep(5)
 driver.back()
 
-time.sleep(10)
+# 7. By.CSS_SELECTOR
+driver.find_element(By.CSS_SELECTOR, "input[type='text']").send_keys("css selector")
+
+time.sleep(3)
 
 driver.quit()
