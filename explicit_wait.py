@@ -34,3 +34,35 @@ Selenium keeps checking every few milliseconds until the element in visible.
 Once it is, the condition passes and returns the element.
 if it doesn't appear within 10 seconds -> TimeoutException.
 """
+
+"""
+element_to_be_clickable
+Waits until an element is both:
+1. Visible (displayed on the page), and
+2. Enabled (not disabled or covered by another element)
+In simple terms: 
+"Wait until I can actually click this element safely."
+"""
+
+button = wait.until(
+    EC.element_to_be_clickable((By.ID, "submit"))
+)
+button.click()
+
+"""
+This wait up to 10 seconds for the element with ID "submit" to be ready to click.
+If it doesn't become clickable -> Selenium raises a TimeoutException.
+"""
+
+"""
+# title_contains("...")
+Waits until the current page's title contains a given substring
+Think of it as:
+"Wait until the page title updates to include this text."
+"""
+wait.until(EC.title_contains("Dashboard"))
+print("Dashboard page is loaded!")
+"""
+Waits up to 10 seconds for the page title to include "Dashboard".
+Raises a TimeoutException if it doesn't appear in time.
+"""
