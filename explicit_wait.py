@@ -55,7 +55,7 @@ If it doesn't become clickable -> Selenium raises a TimeoutException.
 """
 
 """
-# title_contains("...")
+# title_contains("...") // for strict match -> title_is("...")
 Waits until the current page's title contains a given substring
 Think of it as:
 "Wait until the page title updates to include this text."
@@ -68,11 +68,15 @@ Raises a TimeoutException if it doesn't appear in time.
 """
 
 """
-# url_contains("...")
+# url_contains("...") //  for strict match -> url_to_be("...")
 Waits until the current page's URL contains a specific substring.
 in simple terms:
 "Wait until the browser's address bar includes this text"
 """
 wait.until(EC.url_contains("/dashboard"))
 print("Redirected to dashboard page!")
+"""
+Selenium checks repeatedly (until timeout) if the current URL contains /dashboard"
+If it doesn't appear in time -> raises a TimeoutException.
+"""
 
