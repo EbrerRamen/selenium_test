@@ -80,3 +80,15 @@ Selenium checks repeatedly (until timeout) if the current URL contains /dashboar
 If it doesn't appear in time -> raises a TimeoutException.
 """
 
+"""
+alert_is_present()
+Waits until a JavaScript alert box is present on the page
+Once the alert appears, Selenium returns a handle to it so you can accept, dismiss, or read its text.
+"""
+alert = wait.until(EC.alert_is_present())
+print("Alert text:", alert.text)
+alert.accept() # or alert.dismiss()
+"""
+Waits up to 10 seconds for an alert to appear.
+Raises TimeoutException if no alert pops up in time.
+"""
