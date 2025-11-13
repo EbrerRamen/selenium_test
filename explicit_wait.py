@@ -66,3 +66,13 @@ print("Dashboard page is loaded!")
 Waits up to 10 seconds for the page title to include "Dashboard".
 Raises a TimeoutException if it doesn't appear in time.
 """
+
+"""
+# url_contains("...")
+Waits until the current page's URL contains a specific substring.
+in simple terms:
+"Wait until the browser's address bar includes this text"
+"""
+wait.until(EC.url_contains("/dashboard"))
+print("Redirected to dashboard page!")
+
