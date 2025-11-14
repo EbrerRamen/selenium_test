@@ -161,6 +161,34 @@ driver.find_element(By.CLASS_NAME, "menu-btn").click()
 # 2. Click option
 driver.find_element(By.XPATH, "//li[text()='Bangladesh']").click()
 
+# Handling Checkboxes
+"""
+A checkbox is usually like:
+<input type="checkbox" id="subscribe">
+"""
+
+# 1. Selecting a Checkbox
+checkbox = driver.find_element(By.ID, "subscribe")
+checkbox.click()
+
+# 2. Checking if Checkbox is Selected
+checkbox.is_selected() # returns True or False
+
+# 3. Avoid Clicking if Already Selected (best practice)
+if not checkbox.is_selected():
+    checkbox.click()
+# This prevents unnecessary clicks.
+
+# 4. Selecting Multiple Checkboxes
+"""
+Example HTML:
+<input type="checkbox" value="python">
+<input type="checkbox" value="java">
+<input type="checkbox" value="csharp">
+"""
+checkboxes = driver.find_elements(By.XPATH, "//input[@type='checkbox']")
+for box in checkboxes:
+    box.click()
 time.sleep(3)
 
 
