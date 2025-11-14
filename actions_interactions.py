@@ -189,6 +189,36 @@ Example HTML:
 checkboxes = driver.find_elements(By.XPATH, "//input[@type='checkbox']")
 for box in checkboxes:
     box.click()
+
+# Handling Radio Buttons
+"""
+Radio buttons always come in groups, and only one option can be selected.
+Example HTML:
+<input type="radio" name="gender" value="male">
+<input type="radio" name="gender" value="female">
+"""
+
+# 1. Selecting a Radio Button
+driver.find_element(By.XPATH, "//input[@value='female']").click()
+
+# 2. Ensuring Only One is Selected
+male = driver.find_element(By.XPATH, "//input[@value='male']")
+female = driver.find_element(By.XPATH, "//input[@value='female']")
+
+print(male.is_selected()) # False
+print(female.is_selected()) # True (after clicking)
+
+# 3. Selecting Based on Label Text
+"""
+Often HTML looks like this:
+<label>
+  <input type="radio" name="gender" value="female">
+  Female
+</label>
+"""
+driver.find_element(By.XPATH, "//label[contains(text(), 'Female')]").click()
+
+
 time.sleep(3)
 
 
