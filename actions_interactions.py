@@ -218,6 +218,51 @@ Often HTML looks like this:
 """
 driver.find_element(By.XPATH, "//label[contains(text(), 'Female')]").click()
 
+# Some bonus mouse actions
+# ActionChains 
+actions = ActionChains(driver)
+
+# Hover (Mouse Over)
+menu = driver.find_element(By.ID, "menu")
+actions.move_to_element(menu).perform()
+# This is used when submenus appear on hover
+
+# Click and Hold
+element = driver.find_element(By.ID, "dragTarget")
+actions.click_and_hold(element).perform()
+# Used to drag-and-drop or for sliders
+
+# Release (Drop)
+actions.release().perform()
+# Always used with click_and_hold.
+
+# Drag and Drop (Two Ways)
+
+# Method 1 (simple)
+source = driver.find_element(By.ID, "source")
+target = driver.find_element(By.ID, "target")
+
+actions.drag_and_drop(source, target).perform()
+
+# Method 2 (when the website is buggy)
+actions.click_and_hold(source).move_to_element(target).release().perform()
+# This works on sites where normal drag_and_drop doesn't
+
+# Chain Multiple Actions
+actions.move_to_element(menu).click().double_click().perform()
+
+"""
+Real World Scenario
+Imagine test Amazon:
+1. Hover over Account & Lists
+2. Wait for submenu to appear
+3. Click Your Orders
+"""
+menu = driver.find_element(By.ID, "nav-link-accountList")
+actions.move_to_element(menu).perform()
+
+orders = driver.find_element(By.LINK_TEXT, "Your Orders")
+orders.click()
 
 time.sleep(3)
 
