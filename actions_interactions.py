@@ -6,7 +6,7 @@ import time
 driver = webdriver.Chrome()
 driver.get("https://abrar-portfolio-six.vercel.app/")
 
-# send_keys()
+# Typing Into Input Fields (send_keys)
 
 name = driver.find_element(By.ID, "name")
 name.send_keys("Selenium")
@@ -20,5 +20,51 @@ email.send_keys("xyz@xyz.com")
 message = driver.find_element(By.ID, "message")
 message.send_keys("Testing", Keys.ENTER)
 
+# Clicking (All Types)
+
+# Normal click
+submit_btn = driver.find_element(By.CSS_SELECTOR, "button")
+submit_btn.click()
+
+"""
+Best practice:
+Use waits before clicking
+
+button = wait.until(EC.element_to_be_clickable((By.ID, "submit")))
+button.click()
+"""
+
+# Double Click
+from selenium.webdriver import ActionChains
+
+element = driver.find_element(By.ID, "box")
+ActionChains(driver).double_click(element).perform()
+
+# Right Click (Context Click)
+element = driver.find_element(By.ID, "box")
+ActionChains(driver).context_click(element).perform()
+
+# Click Using JavaScript (When Normal Click Fails)
+"""
+Sometimes .click() doesn't work because:
+- The element is hidden behind another element
+- The site uses fancy JavaScript frameworks (React, Vue, Angular)
+- The click is intercepted
+"""
+element = driver.find_element(By.ID, "submit")
+driver.execute_script("arguments[0].click();", element)
+"""
+This is the go-to solution when:
+ElementClickInterceptedException
+keep happening.
+"""
+
+"""
+Clicking by Coordinate (Rare but Useful)
+Used when an element is not selectable
+"""
+ActionChains(driver).move_by_offset(200, 300).click().perform()
+
 time.sleep(3)
+
 
