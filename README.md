@@ -70,13 +70,35 @@ It covers concepts from absolute basics → intermediate topics → real-world a
 - Typing text
 - Clearing input fields
 - Using keyboard keys (ENTER, TAB, etc.)
-### ✔ 4.1 Typing Into Fields (send_keys)
+### 4.2 Clicking Elements
 - Normal click
 - Element click vs JS click
   ```python
   driver.execute_script("arguments[0].click();", element)
   ```
 - Why arguments[0]? → Passed as first function argument to the JS script
+### ✔ 4.3 Scrolling
+- driver.execute_script("window.scrollBy(...)")
+- Scroll to element
+- Scroll to bottom/top
+### 4.4 Handling Dropdowns (Select)
+- select_by_visible_text
+- select_by_value
+- select_by_index
+- Handling non-<select> custom dropdowns (click + option click)
+### 4.5 Handling Checkboxes & Radio Buttons
+- .click()
+- .is_selected()
+- Looping through groups
+- Selecting based on label text
+### 4.6 Advanced Mouse Actions — ActionChains
+- Hover (move_to_element)
+- Right click (context_click)
+- Double click
+- Click and hold
+- Move by offset
+- Drag & Drop (simple & manual)
+- Chaining multiple actions
 
 
 
