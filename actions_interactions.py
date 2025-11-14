@@ -117,6 +117,50 @@ driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", scro
 driver.execute_script("arguments[0].scrollLeft += 300;", scroll_box)
 
 # Selenium has no native scrolling method. Everything is done using JS.
+
+# Handling Dropdowns
+# Selenium dropdowns are handled in two main ways
+
+# Type 1: HTML <select> Dropdown (Standard Dropdown)
+"""
+These are the real dropdowns that use the <select> tag.
+<select id="country">
+  <option value="bd">Bangladesh</option>
+  <option value="in">India</option>
+  <option value="pk">Pakistan</option>
+</select>
+"""
+
+from selenium.webdriver.support.ui import Select
+
+select = Select(driver.find_element(By.ID, "country"))
+select.select_by_visible_text("Bangladesh")
+# or select.select_by_value("bd")
+# or select.select_by_index(2)
+
+# Type 2: Custom Dropdown (Non-Select Dropdown)
+"""
+Many modern websites do NOT use <select>.
+Example: React, Bootstrap, Tailwind, Material UI dropdowns.
+They look like dropdowns but are just <div>, <li>, <button>
+<div class="dropdown">
+  <div class="menu-btn">Choose Country</div>
+  <ul class="menu">
+    <li>Bangladesh</li>
+    <li>India</li>
+    <li>Pakistan</li>
+  </ul>
+</div>
+"""
+
+# How to handle?
+
+# 1. Click dropdown
+driver.find_element(By.CLASS_NAME, "menu-btn").click()
+
+# 2. Click option
+driver.find_element(By.XPATH, "//li[text()='Bangladesh']").click()
+
 time.sleep(3)
 
 
