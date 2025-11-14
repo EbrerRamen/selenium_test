@@ -65,6 +65,58 @@ Used when an element is not selectable
 """
 ActionChains(driver).move_by_offset(200, 300).click().perform()
 
+# 1. Scroll by Pixel Amount
+driver.execute_script("window.scrollBy(0, 300);")
+# This scrolls down by 300 pixels.
+
+# Scroll up by pixels
+driver.execute_script("window.scrollBy(0, -300);")
+
+"""
+Format:
+window.scrollBy(x-axis, y-axis)
+x = horizontal 
+y = vertical
+"""
+
+# 2. Scroll to the Bottom of the page
+driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+"""
+Useful for: 
+- Infinite scroll pages
+- Twitter-like feeds
+- Lazy-loaded pages
+"""
+
+#  3. Scroll to the Top
+driver.execute_script("window.scrollTo(0, 0);")
+
+# 4. Scroll Until an Element Is Visible (Most Important)
+element = driver.find_element(By.ID, "footer")
+driver.execute_script("arguments[0].scrollIntoView(true);", element)
+"""
+Why it's so good?
+- Brings element into view
+- Works even if the element is far down
+- Prevents "element not clickable" errors
+- It scrolls EXACTLY to the element
+"""
+
+# Scroll element is centered
+driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", element)
+
+# 5. Scroll Inside a Specific DIV (Not Whole Page)
+
+# Sometimes the scrollable area is not the page but a container
+scroll_box = driver.find_element(By.CSS_SELECTOR, ".scroll-container")
+
+driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", scroll_box)
+# This scrolls inside the box, not the page.
+
+# Scroll horizontally 
+driver.execute_script("arguments[0].scrollLeft += 300;", scroll_box)
+
+# Selenium has no native scrolling method. Everything is done using JS.
 time.sleep(3)
 
 
